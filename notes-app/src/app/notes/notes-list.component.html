@@ -2,14 +2,21 @@
   <button *ngFor="let note of notes" (click)="selectItem(note)" [ngClass]="{ 'active': note == selectedNote }" [disabled]="note == selectedNote"
     class="list-group-item">
     <div class="row">
-      <div class="col-xs-6">
+      <div class="col-xs-4">
         <p>{{ note.title }}</p>
-        <p class="badge">{{ note.createdOn | date: "dd/MM/yyyy HH:mm" }}</p>
         <div>
           <b *ngIf="note.content.length > 25">It is long one</b>
         </div>
       </div>
-      <div class="col-xs-6">
+      <div class="col-xs-4">
+        <div>
+          Created on: <p class="badge">{{ note.createdOn | amCalendar }}</p>
+        </div>
+        <div>
+          Due to: <p class="badge">{{ note.dueDate | amCalendar }}</p>
+        </div>
+      </div>
+      <div class="col-xs-4">
         <button (click)="deleteItem(note)" class="btn btn-danger pull-right">X</button>
       </div>
     </div>

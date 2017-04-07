@@ -10,11 +10,16 @@ export class CreateNoteComponent {
 
   newNote = {} as Note;
 
+  ngOnInit() {
+    // sadly it doesn't work
+    this.newNote.dueDate = new Date();
+  }
+
   onSubmit() {
     this.newNote.createdOn = new Date();
-
+    this.newNote.dueDate = new Date(this.newNote.dueDate);
+    console.log(this.newNote);
     this.createdItem.emit(this.newNote);
-
     this.newNote = {} as Note;
   }
 }

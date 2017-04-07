@@ -26,7 +26,7 @@ export class NotesListComponent {
       if we're deleting the note that is currently selected,
       we're going to set the first available note on the list
      */
-    if (this.selectedNote === note) {
+    if (this.notes.length > 1 && this.selectedNote === note) {
       if (this.selectedNote === this.notes[0]) {
         this.selectItem(this.notes[1]);
       }
