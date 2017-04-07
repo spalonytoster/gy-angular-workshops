@@ -20,4 +20,20 @@ export class NotesListComponent {
     this.selectedNote = note;
     this.selectedItem.emit(note);
   }
+
+  deleteItem(note: Note) {
+    /*
+      if we're deleting the note that is currently selected,
+      we're going to set the first available note on the list
+     */
+    if (this.selectedNote === note) {
+      if (this.selectedNote === this.notes[0]) {
+        this.selectItem(this.notes[1]);
+      }
+      else {
+        this.selectItem(this.notes[0]);
+      }
+    }
+    this.deletedItem.emit(note);
+  }
 }

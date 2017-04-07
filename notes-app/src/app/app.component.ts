@@ -37,6 +37,11 @@ export class AppComponent implements OnInit {
     this.viewState = NotesViewState.display;
   }
 
+  onDeletedItem(deleted: Note) {
+    this.notesService.remove(deleted._id);
+    this.notes = this.notesService.get();
+  }
+
   createNote() {
     this.viewState = NotesViewState.create;
   }
