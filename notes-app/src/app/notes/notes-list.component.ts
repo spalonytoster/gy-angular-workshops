@@ -8,8 +8,13 @@ import { Note } from './note.model';
 export class NotesListComponent {
   @Input() notes = [] as Note[];
   @Output() selectedItem = new EventEmitter<Note>();
+  @Output() deletedItem = new EventEmitter<Note>();
 
   selectedNote: Note;
+
+  ngOnInit() {
+    this.selectedNote = this.notes[0];
+  }
 
   selectItem(note: Note) {
     this.selectedNote = note;
