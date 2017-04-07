@@ -1,11 +1,14 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3>
-            {{ selectedNote.title }}
-        </h3>
-        <h4>
-            {{ selectedNote.createdOn | date: "dd/MM/yyyy HH:mm" }}
-        </h4>
+        <div class="row">
+          <div class="col-xs-6">
+            <h3>{{ selectedNote.title }}</h3>
+          </div>
+          <div class="col-xs-6">
+            <h4>Created: <b>{{ selectedNote.createdOn | amCalendar }}</b></h4>
+            <h4>Due to: <b>{{ selectedNote.dueDate | amCalendar }}</b></h4>
+          </div>
+        </div>
     </div>
     <div class="panel-body">
         <p class="text-justify">
