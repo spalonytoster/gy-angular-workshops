@@ -14,6 +14,7 @@
                 <label for="note-content">Note:</label>
                 <textarea [(ngModel)]="newNote.content" required class="form-control new-note__content-input" name="note-content" id="note-content"></textarea>
             </div>
+            <button type="button" (click)="onCancel()" class="btn btn-danger">Cancel</button>
             <button type="submit" [disabled]="!newNoteForm.form.valid" class="btn btn-success">Submit</button>
         </form>
     </div>

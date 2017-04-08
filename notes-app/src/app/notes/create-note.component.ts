@@ -7,6 +7,7 @@ import { Note } from './note.model';
 })
 export class CreateNoteComponent {
   @Output() createdItem = new EventEmitter<Note>();
+  @Output() onBack = new EventEmitter();
 
   newNote = {} as Note;
 
@@ -15,9 +16,14 @@ export class CreateNoteComponent {
     this.newNote.dueDate = new Date();
   }
 
+  onCancel() {
+    this.onBack.emit();
+  }
+
   onSubmit() {
     this.newNote.createdOn = new Date();
     this.newNote.dueDate = new Date(this.newNote.dueDate);
+    this.newNote.priority = 1;
     console.log(this.newNote);
     this.createdItem.emit(this.newNote);
     this.newNote = {} as Note;

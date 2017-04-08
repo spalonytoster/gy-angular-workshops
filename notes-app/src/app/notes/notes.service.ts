@@ -4,10 +4,10 @@ import { Note } from './note.model';
 @Injectable()
 export class NotesService {
   notes = [
-    { _id: 1, title: 'First note', content: 'First note sample content', createdOn: new Date(2017, 4, 1, 15, 30) },
-    { _id: 2, title: 'Second note', content: 'Second note sample content', createdOn: new Date(2017, 4, 2, 16, 30) },
-    { _id: 3, title: 'Third note', content: 'Third note sample content', createdOn: new Date(2017, 4, 3, 17, 30) },
-    { _id: 4, title: 'Fourth note', content: 'Fourth note sample content', createdOn: new Date(2017, 4, 4, 18, 30) },
+    { _id: 1, title: 'First note', content: 'First note sample content', createdOn: new Date(2017, 4, 1, 15, 30), priority: 2 },
+    { _id: 2, title: 'Second note', content: 'Second note sample content', createdOn: new Date(2017, 4, 2, 16, 30), priority: 4 },
+    { _id: 3, title: 'Third note', content: 'Third note sample content', createdOn: new Date(2017, 4, 3, 17, 30), priority: 3 },
+    { _id: 4, title: 'Fourth note', content: 'Fourth note sample content', createdOn: new Date(2017, 4, 4, 18, 30), priority: 1 },
   ] as Note[];
 
   get(): Note[] {

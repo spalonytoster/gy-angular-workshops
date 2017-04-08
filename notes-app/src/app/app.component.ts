@@ -45,4 +45,8 @@ export class AppComponent implements OnInit {
   createNote() {
     this.viewState = NotesViewState.create;
   }
+
+  onBack() {
+    this.viewState = NotesViewState.display;
+  }
 }

@@ -17,7 +17,12 @@
         </div>
       </div>
       <div class="col-xs-4">
-        <button (click)="deleteItem(note)" class="btn btn-danger pull-right">X</button>
+        <div class="col-xs-6">
+          <input style="width: 40px; color: black;" type="number" [(ngModel)]="note.priority" min="1" max="5">
+        </div>
+        <div class="col-xs-6">
+          <button (click)="deleteItem(note)" class="btn btn-danger pull-right">X</button>
+        </div>
       </div>
     </div>
     </button>

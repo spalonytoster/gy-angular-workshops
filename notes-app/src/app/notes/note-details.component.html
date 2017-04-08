@@ -2,11 +2,12 @@
     <div class="panel-heading">
         <div class="row">
           <div class="col-xs-6">
-            <h3>{{ selectedNote.title }}</h3>
+            <h2>{{ selectedNote.title }}</h2>
+            <p>Priority: <b>{{ selectedNote.priority }}</b></p>
           </div>
           <div class="col-xs-6">
-            <h4>Created: <b>{{ selectedNote.createdOn | amCalendar }}</b></h4>
-            <h4>Due to: <b>{{ selectedNote.dueDate | amCalendar }}</b></h4>
+            <h5>Created: <b>{{ selectedNote.createdOn | amCalendar }}</b></h5>
+            <h5>Due to: <b>{{ selectedNote.dueDate | amCalendar }}</b></h5>
           </div>
         </div>
     </div>
