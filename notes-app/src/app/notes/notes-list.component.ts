@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Note } from './note.model';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-notes-list',
@@ -35,5 +36,9 @@ export class NotesListComponent {
       }
     }
     this.deletedItem.emit(note);
+  }
+
+  isDueDateTommorow(dueDate: Date) {
+    return moment.duration(moment(dueDate).diff(moment(new Date()))).asDays() <= 1;
   }
 }
