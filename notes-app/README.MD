@@ -1,14 +1,21 @@
-## Exercises:
-1. I added Notes array `notes` and bind it to app.component.html view. Add `selectedNote`, set it to **first array element** and bind it to view.
-2. You saw how to use `*ngIf` - use it to add extra `<h5>` header to list element which is selected.
-3. We've added `ngForm` and `ngSubmit`, but still nothing changed. Add `newNote` to list, but remember - it also needs created date!
-4. Add missing `date` pipes.
-5. Adding components - finally! Same as I had extracted `NoteDetailsComponent` please create `NotesListComponent`. Hmm, what about `selectItem` method?
-6. Do the same with adding note feature.
- * Move it to new component `CreateNoteComponent`
- * Add @Output `createdItem` in your new component
-7. The icing on the cake - lets hide components when not used.
- * Handle `+` button with `createNote` method (create it) and hide `app-note-details` component if you're in creating state
- * Hide `app-create-note` component if you're only watching details.
- * Tip - use `*ngIf` and think about some state .. maybe variable, maybe enum.
- 8. Now we're storing `notes` in services. Change the code to only `fetch` the data from service after adding new note.
+# Zadanie konkursowe
+
+### Wykonane zadania i ewentualne uwagi
+
+- [x] Przycisk usuwania notek
+- [x] Dodanie pola *Due date* - wyświetlanie na liście notatek + w szczegółach: Tutaj pozwoliłem sobie skorzystac z biblioteki *moment.js* aby wygodniej
+było pracować z datą i bardziej elegancko wyświetlac wyniki.
+
+- [x] Możliwość ustawiania priorytetów i ich wyświetlanie na liście i w szczegółach: Przyjąłem, że priorytety będą wartościami liczbowymi od 1 do 5.
+
+- [x] Filtrowanie po tytule, due date, priorytetach: Utworzyłem nowy komponent, do którego przekazywana jest zawsze oryginalna lista notek, a wychodzi z niego odfiltrowana lista.
+Wydaje mi się, że rozwiązanie nie jest optymalne i na pewno możnaby to zrobić lepiej. W mojej implementacji korzystając z biblioteki *lodash* filtruję listę notatek wedle podanych kryteriów
+za każdym razem kiedy, w którymś z nich nastąpi zmiana. W przypadku wyszukiwania po due date szukamy po okresie czasu, gdzie `start` to data początkowa (godzina ustawiona na 00:00:00), a `end`
+to data końcowa (godzina ustawiona na 23:59:59 - w ten sposób jeśli ustawimy ten sam dzień w `start` i `end` to wyszukiwanie obejmie cały dzień). Jeżeli po przefiltrowaniu listy klikniemy znowu
+przycisk **Filter**, lista notatek wróci do swojego pierwotnego stanu.
+
+- [x] Wyróżnienie notatek z: due date na jutro, najwyższym priorytetem: Dobrym rozwiązaniem wydało mi się dodanie odpowiednich ikonek do wyróżnionych notatek na liście. Ikonka pioruna oznacza, że
+notatka ma najwyższy priorytet (wartość 5), a ikonka zegara oznacza, że due date notatki minie w mniej niż 24 godziny.
+
+- [x] Przycisk cancel przy dodawaniu notatki
+- [ ] Edycja notatki
