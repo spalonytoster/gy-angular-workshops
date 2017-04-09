@@ -55,6 +55,9 @@ export class AppComponent implements OnInit {
 
   toggleFiltering() {
     this.filteringEnabled = !this.filteringEnabled;
+    if (!this.filteringEnabled) {
+        this.notes = this.originalNotes;
+    }
   }
 
   onFilter(filteredNotes) {

@@ -11,7 +11,7 @@
     <div class="btn-group" role="group">
       <button type="button" class="btn btn-default"
               *ngFor="let priority of priorities"
-              (click)="togglePriority(priority)"
+              (click)="togglePriorityAndFilter(priority)"
               [ngClass]="{ 'btn-primary': priority.active }">{{ priority.value }}</button>
     </div>
   </div>
@@ -20,11 +20,13 @@
     <div class="row">
       <div class="col-xs-6">
         From: <input id="due-date-from" type="date" class="form-control"
-                     [(ngModel)]="filterBy.dueDateRange.start" name="due-date-from">
+                     [(ngModel)]="filterBy.dueDateRange.start" name="due-date-from"
+                     (change)="filter()">
       </div>
       <div class="col-xs-6">
         To: <input id="due-date-to" type="date" class="form-control"
-                   [(ngModel)]="filterBy.dueDateRange.end" name="due-date-to">
+                   [(ngModel)]="filterBy.dueDateRange.end" name="due-date-to"
+                   (change)="filter()">
       </div>
     </div>
   </div>
