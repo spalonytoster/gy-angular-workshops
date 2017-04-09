@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   viewState = NotesViewState.display;
 
   notesViewStateRef = NotesViewState;
-  filteringEnabled: boolean = true;
+  filteringEnabled: boolean = false;
 
   constructor(private notesService: NotesService) {
   }
