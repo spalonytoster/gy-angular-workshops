@@ -5,8 +5,11 @@
       <div class="col-xs-4">
         <p>{{ note.title }}</p>
         <div class="container">
-          <span *ngIf="note.priority === 5" class="glyphicon glyphicon-flash" aria-hidden="true"></span>
-          <span *ngIf="isDueDateTommorow(note.dueDate)" style="margin-left: 10px;" class="glyphicon glyphicon-time" aria-hidden="true"></span>
+          <span title="Urgent!" *ngIf="note.priority === 5"
+                class="glyphicon glyphicon-flash" aria-hidden="true"></span>
+          <span title="Deadline tommorow!" *ngIf="isDueDateTommorow(note.dueDate)"
+                style="margin-left: 10px;" class="glyphicon glyphicon-time"
+                aria-hidden="true"></span>
         </div>
         <div>
           <b *ngIf="note.content.length > 25">It is long one</b>
