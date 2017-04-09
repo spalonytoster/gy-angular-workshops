@@ -24,7 +24,6 @@ export class CreateNoteComponent {
     this.newNote.createdOn = new Date();
     this.newNote.dueDate = new Date(this.newNote.dueDate);
     this.newNote.priority = 1;
-    console.log(this.newNote);
     this.createdItem.emit(this.newNote);
     this.newNote = {} as Note;
   }

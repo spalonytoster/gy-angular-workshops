@@ -2,7 +2,8 @@
   <div class="form-group">
     <label for="by-title">Title</label>
     <input type="text" class="form-control" id="by-title" name="title"
-           placeholder="Note's title" [(ngModel)]="filterBy.title">
+           placeholder="Note's title" [(ngModel)]="filterBy.title"
+           (keyup)="filter()">
   </div>
   <div class="form-group">
     <label>Priority</label>
@@ -18,14 +19,12 @@
     <label>Due date</label>
     <div class="row">
       <div class="col-xs-6">
-        <!-- <label for="due-date-from">From</label> -->
         From: <input id="due-date-from" type="date" class="form-control"
-                     [(ngModel)]="filterBy.dueDateRange.start">
+                     [(ngModel)]="filterBy.dueDateRange.start" name="due-date-from">
       </div>
       <div class="col-xs-6">
-        <!-- <label for="due-date-to">To</label> -->
         To: <input id="due-date-to" type="date" class="form-control"
-                   [(ngModel)]="filterBy.dueDateRange.end">
+                   [(ngModel)]="filterBy.dueDateRange.end" name="due-date-to">
       </div>
     </div>
   </div>

@@ -1,7 +1,8 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Note } from './note.model';
 import { NotesFilterParams } from './notes-filter-params.model';
 import { Priority } from './notes-filter-priority.model';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-notes-filter',
@@ -9,7 +10,7 @@ import { Priority } from './notes-filter-priority.model';
 })
 export class NotesFilterComponent {
   @Input() notes = [] as Note[];
-  // @Output() notesFiltered = [] as Note[]; TODO: check if doesnt have to fire event
+  @Output() onFilter = new EventEmitter<Note[]>();
 
   priorities: Priority[] = [] as Priority[];
   filterBy: NotesFilterParams = {} as NotesFilterParams;
@@ -31,12 +32,20 @@ export class NotesFilterComponent {
     let priorities = this.filterBy.priorities;
     priority.active = !priority.active;
 
-    // TODO: use lodash
-    // if (priorities.includes(priority.value)) {
-    //   priorities.remove(priority.value);
-    // }
-    // else {
-    //   priorities.push(priority.value);
-    // }
+    if (priorities.includes(priority.value)) {
+      _.remove(priorities, (p) => p === priority.value);
+    }
+    else {
+      priorities.push(priority.value);
+    }
+  }
+
+  filter() {
+    let filteredNotes = this.notes;
+    if (this.filterBy.title !== '') {
+      filteredNotes = filteredNotes.filter((note) => note.title.toLowerCase().includes(this.filterBy.title.toLowerCase()));
+    }
+    console.log(filteredNotes);
+    this.onFilter.emit(filteredNotes);
   }
 }

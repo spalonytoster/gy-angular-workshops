@@ -14,6 +14,7 @@ enum NotesViewState {
 })
 export class AppComponent implements OnInit {
   notes: Note[] = [];
+  originalNotes: Note[];
   selectedNote: Note;
   viewState = NotesViewState.display;
 
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.notes = this.notesService.get();
+    this.originalNotes = this.notes.slice();
     this.selectedNote = this.notes[0];
   }
 
@@ -53,5 +55,9 @@ export class AppComponent implements OnInit {
 
   toggleFiltering() {
     this.filteringEnabled = !this.filteringEnabled;
+  }
+
+  onFilter(filteredNotes) {
+    this.notes = filteredNotes;
   }
 }

@@ -16,7 +16,9 @@
                   class="btn btn-primary"
                   (click)="toggleFiltering()"
                   style="margin-bottom: 10px;">Filter</button>
-          <app-notes-filter *ngIf="filteringEnabled"></app-notes-filter>
+          <app-notes-filter *ngIf="filteringEnabled"
+                            [notes]="originalNotes"
+                            (onFilter)="onFilter($event)"></app-notes-filter>
         </div>
         <div class="notes-list__button">
           <h4 class="notes-list__button__elements">Your recent notes</h4>
