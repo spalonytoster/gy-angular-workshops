@@ -11,6 +11,13 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-6 col-md-6 col-lg-6 side">
+        <div style="margin-bottom: 10px;">
+          <button [ngClass]="{ 'btn-success': filteringEnabled }"
+                  class="btn btn-primary"
+                  (click)="toggleFiltering()"
+                  style="margin-bottom: 10px;">Filter</button>
+          <app-notes-filter *ngIf="filteringEnabled"></app-notes-filter>
+        </div>
         <div class="notes-list__button">
           <h4 class="notes-list__button__elements">Your recent notes</h4>
           <button (click)="createNote()" class="btn btn-success btn-lg notes-list__button__elements pull-right">+</button>

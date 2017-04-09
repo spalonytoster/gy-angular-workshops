@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   viewState = NotesViewState.display;
 
   notesViewStateRef = NotesViewState;
+  filteringEnabled: boolean = true;
 
   constructor(private notesService: NotesService) {
   }
@@ -48,5 +49,9 @@ export class AppComponent implements OnInit {
 
   onBack() {
     this.viewState = NotesViewState.display;
+  }
+
+  toggleFiltering() {
+    this.filteringEnabled = !this.filteringEnabled;
   }
 }

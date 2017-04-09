@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { NoteDetailsComponent } from './notes/note-details.component';
 import { NotesListComponent } from './notes/notes-list.component';
 import { CreateNoteComponent } from './notes/create-note.component';
+import { NotesFilterComponent } from './notes/notes-filter.component';
 import { NotesService } from './notes/notes.service';
 
 @NgModule({
@@ -15,7 +16,8 @@ import { NotesService } from './notes/notes.service';
     AppComponent,
     NoteDetailsComponent,
     NotesListComponent,
-    CreateNoteComponent
+    CreateNoteComponent,
+    NotesFilterComponent
   ],
   imports: [
     BrowserModule,

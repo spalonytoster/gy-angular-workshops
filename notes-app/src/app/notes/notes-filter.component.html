@@ -1,0 +1,32 @@
+<form>
+  <div class="form-group">
+    <label for="by-title">Title</label>
+    <input type="text" class="form-control" id="by-title" name="title"
+           placeholder="Note's title" [(ngModel)]="filterBy.title">
+  </div>
+  <div class="form-group">
+    <label>Priority</label>
+    <br>
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-default"
+              *ngFor="let priority of priorities"
+              (click)="togglePriority(priority)"
+              [ngClass]="{ 'btn-primary': priority.active }">{{ priority.value }}</button>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Due date</label>
+    <div class="row">
+      <div class="col-xs-6">
+        <!-- <label for="due-date-from">From</label> -->
+        From: <input id="due-date-from" type="date" class="form-control"
+                     [(ngModel)]="filterBy.dueDateRange.start">
+      </div>
+      <div class="col-xs-6">
+        <!-- <label for="due-date-to">To</label> -->
+        To: <input id="due-date-to" type="date" class="form-control"
+                   [(ngModel)]="filterBy.dueDateRange.end">
+      </div>
+    </div>
+  </div>
+</form>
