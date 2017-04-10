@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Note } from './notes/note.model';
 import { NotesService } from './notes/notes.service';
 import { NotesViewState } from './notes/notes-view-state.model';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-root',
@@ -35,8 +36,12 @@ export class AppComponent implements OnInit {
     this.viewState = NotesViewState.display;
   }
 
-  onEditedItem(note: Note) {
-    // TODO
+  onEditedItem(updated: Note) {
+    this.notesService.update(updated);
+    this.notes = this.notesService.get();
+    this.originalNotes = this.notes.slice();
+    this.selectedNote = _.find(this.notes, (note: Note) => note._id === updated._id);
+    this.viewState = NotesViewState.display;
   }
 
   onDeletedItem(deleted: Note) {

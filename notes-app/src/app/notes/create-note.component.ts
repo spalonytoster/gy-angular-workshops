@@ -20,7 +20,7 @@ export class CreateNoteComponent {
   ngOnInit() {
     if (this.mode === NotesViewState.edit) {
       this.newNote = this.noteToEdit;
-      this.dueDate = moment(this.newNote.dueDate).format("YYYY-MM-DDThh:mm");
+      this.dueDate = moment(this.newNote.dueDate).format("YYYY-MM-DDTkk:mm");
     }
   }
 
@@ -38,7 +38,6 @@ export class CreateNoteComponent {
   }
 
   createNote() {
-    console.log(this.dueDate);
     this.newNote.createdOn = new Date();
     this.newNote.dueDate = new Date(this.dueDate);
     this.newNote.priority = 1;
@@ -47,7 +46,12 @@ export class CreateNoteComponent {
   }
 
   editNote() {
-    console.log('note edited');
+    // since TS 2.1 there a really cool way to deep clone object, nice
+    let newNote = { ...this.newNote };
+
+    // strangely enough, new Date(this.dueDate) gave wrong results with particular inputs
+    newNote.dueDate = moment(this.dueDate).toDate();
+    this.editedItem.emit(newNote);
   }
 
   isCreateMode() {

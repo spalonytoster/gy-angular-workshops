@@ -26,6 +26,7 @@
         </div>
         <!--BEGIN: Notes list-->
         <app-notes-list [notes]="notes"
+                        [selectedNote]="selectedNote"
                         (selectedItem)="onSelectedItem($event)"
                         (onEditItem)="onEditItem($event)"
                         (deletedItem)="onDeletedItem($event)">
@@ -44,7 +45,7 @@
           <app-create-note *ngSwitchCase="notesViewStateRef.edit"
                            [mode]="viewState"
                            [noteToEdit]="selectedNote"
-                           (createdItem)="onCreatedItem($event)"
+                           (editedItem)="onEditedItem($event)"
                            (onBack)="onBack()">
           </app-create-note>
         </div>

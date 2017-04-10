@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Note } from './note.model';
+import * as _ from 'lodash';
 
 @Injectable()
 export class NotesService {
@@ -28,5 +29,11 @@ export class NotesService {
 
   remove(_id: number) {
     this.notes = this.notes.filter((note) => note._id !== _id);
+  }
+
+  update(updated: Note) {
+    let index: number = _.findIndex(this.notes, (note: Note) => note._id === updated._id);
+    this.notes[index] = updated;
+    return index;
   }
 }

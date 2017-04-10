@@ -71,7 +71,6 @@ export class NotesFilterComponent {
       filteredNotes = filteredNotes.filter((note) => note.dueDate <= dueDateRange.end);
     }
 
-    console.log(filteredNotes);
     this.onFilter.emit(filteredNotes);
   }
 }
