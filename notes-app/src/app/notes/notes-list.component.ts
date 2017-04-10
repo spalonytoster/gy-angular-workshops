@@ -10,6 +10,7 @@ export class NotesListComponent {
   @Input() notes = [] as Note[];
   @Output() selectedItem = new EventEmitter<Note>();
   @Output() deletedItem = new EventEmitter<Note>();
+  @Output() onEditItem = new EventEmitter<Note>();
 
   selectedNote: Note;
 
@@ -36,6 +37,10 @@ export class NotesListComponent {
       }
     }
     this.deletedItem.emit(note);
+  }
+
+  editItem(note: Note) {
+    this.onEditItem.emit(note);
   }
 
   isDueDateTommorow(dueDate: Date) {

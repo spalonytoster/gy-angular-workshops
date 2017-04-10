@@ -1,10 +1,13 @@
 <div class="panel panel-success">
-    <div class="panel-heading">New note</div>
+    <div class="panel-heading">
+      <span *ngIf="isCreateMode()">New note</span>
+      <span *ngIf="!isCreateMode()">Edit note</span>
+    </div>
     <div class="panel-body">
         <form #newNoteForm="ngForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label for="due-date">Due date:</label>
-                <input type="datetime-local" [(ngModel)]="newNote.dueDate" required class="form-control" name="due-date" id="due-date">
+                <input type="datetime-local" [(ngModel)]="dueDate" required class="form-control" name="due-date" id="due-date">
             </div>
             <div class="form-group">
                 <label for="note-title">Title:</label>

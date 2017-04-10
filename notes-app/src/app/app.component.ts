@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Note } from './notes/note.model';
 import { NotesService } from './notes/notes.service';
-
-enum NotesViewState {
-  display = 0,
-  create = 1
-}
+import { NotesViewState } from './notes/notes-view-state.model';
 
 @Component({
   selector: 'app-root',
@@ -21,8 +17,7 @@ export class AppComponent implements OnInit {
   notesViewStateRef = NotesViewState;
   filteringEnabled: boolean = false;
 
-  constructor(private notesService: NotesService) {
-  }
+  constructor(private notesService: NotesService) { }
 
   ngOnInit() {
     this.notes = this.notesService.get();
@@ -40,9 +35,18 @@ export class AppComponent implements OnInit {
     this.viewState = NotesViewState.display;
   }
 
+  onEditedItem(note: Note) {
+    // TODO
+  }
+
   onDeletedItem(deleted: Note) {
     this.notesService.remove(deleted._id);
     this.notes = this.notesService.get();
+  }
+
+  onEditItem(note: Note) {
+    this.viewState = NotesViewState.edit;
+    this.selectedNote = note;
   }
 
   createNote() {
